@@ -16,10 +16,19 @@
   align-items: center;
 }
 
+.noData{
+  font-size: 1.25em;
+  color: #8f8f8f;
+}
+
 .footer {
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
+  height: 60px;
+  background-color: #d1d1d1;
+  padding: 0 10px;
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,16 +70,6 @@
   line-height: 1.5;
   font-size: 1.5rem;
 }
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
 .grid {
   display: flex;
   align-items: center;
@@ -92,27 +91,49 @@
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+.card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
 }
 
-.card h3 {
+.card h4 {
   margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
 .card p {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 1.5;
+  font-weight: 400;
 }
 
-.logo {
-  height: 1em;
+.card div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1em;
 }
+
+.card small{
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.card button{
+  background-color: #0070f3;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  border: none;
+}
+
 
 @media (max-width: 600px) {
   .grid {

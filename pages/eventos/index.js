@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import api from '../services/api'
-import styles from '../styles/Home.module.css'
+import api from '../../services/api'
+import styles from '../../styles/Home.module.css'
 
 export default function Home({ eventos }) {
   return (
