@@ -1,14 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import api from '../../../services/api'
-import styles from '../../../styles/Home.module.css'
 import Layout from '../../../components/Layout'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 export default function Localizacao({ localizacao }) {
-  const [endereco, setEndereco] = useState(localizacao.endereco)
-  const [valor, setValor] = useState(localizacao.valor)
+  const [endereco, setEndereco] = useState(localizacao ? localizacao.endereco : "")
+  const [valor, setValor] = useState(localizacao ? localizacao.valor : "")
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
