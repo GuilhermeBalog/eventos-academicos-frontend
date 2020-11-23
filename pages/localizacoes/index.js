@@ -6,7 +6,7 @@ import Layout from '../../components/Layout'
 import api from '../../services/api'
 import styles from '../../styles/Home.module.css'
 
-export default function Localizacoes({ localizacoes }) {
+export default function Localizacoes() {
   const [localizacoesAtuais, setLocalizacoes] = useState([])
 
   useEffect(async () => {

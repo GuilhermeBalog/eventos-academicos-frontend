@@ -1,11 +1,8 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { FaTrashAlt, FaPlus } from 'react-icons/fa'
 import Layout from '../../components/Layout'
 import api from '../../services/api'
-import styles from '../../styles/Home.module.css'
 
 export default function NovaLocalizacao() {
   const [endereco, setEndereco] = useState("")

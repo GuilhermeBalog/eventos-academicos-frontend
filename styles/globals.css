@@ -44,7 +44,7 @@ form label{
   font-weight: 500;
 }
 
-form input{
+form input, form select{
   padding: 5px;
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;

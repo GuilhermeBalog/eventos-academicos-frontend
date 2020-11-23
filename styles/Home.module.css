@@ -179,8 +179,8 @@
   font-weight: 300;
 }
 
-.card > div > div > button{
-  margin-left: 10px;
+.card button{
+  margin-right: 10px;
 }
 
 @media (max-width: 600px) {
