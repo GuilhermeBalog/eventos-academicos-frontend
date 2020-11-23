@@ -7,7 +7,7 @@ export default function Layout({ children }) {
       <header className={styles.header}>
         <div>
           <Link href="/">
-            Sistema de eventos acadêmicos
+            Home
           </Link>
         </div>
         <ul>

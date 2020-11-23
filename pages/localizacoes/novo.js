@@ -10,10 +10,13 @@ import styles from '../../styles/Home.module.css'
 export default function NovaLocalizacao() {
   const [endereco, setEndereco] = useState("")
   const [valor, setValor] = useState("")
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
 
   async function handleSubmit(e) {
     e.preventDefault()
+    setLoading(true)
+
     await api.post('/localizacoes', { endereco, valor })
     router.push('/localizacoes')
   }
@@ -30,13 +33,27 @@ export default function NovaLocalizacao() {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="endereco">Endereço</label>
-          <input type="text" name="endereco" onChange={e => setEndereco(e.target.value)} id="endereco" placeholder="Digite o endereço" />
+          <input
+            type="text"
+            name="endereco"
+            value={endereco}
+            onChange={e => setEndereco(e.target.value)}
+            id="endereco"
+            placeholder="Digite o endereço"
+          />
         </div>
         <div>
           <label htmlFor="valor">Valor do aluguel</label>
-          <input type="text" name="valor" onChange={e => setValor(e.target.value)} id="valor" placeholder="Digite o valor" />
+          <input
+            type="text"
+            name="valor"
+            value={valor}
+            onChange={e => setValor(e.target.value)}
+            id="valor"
+            placeholder="Digite o valor"
+          />
         </div>
-        <button type="submit">Cadastrar</button>
+        <button type="submit" disabled={loading}>Cadastrar</button>
       </form>
     </Layout>
   )

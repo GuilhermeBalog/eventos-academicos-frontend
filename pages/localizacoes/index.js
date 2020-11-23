@@ -1,15 +1,21 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
-import { FaTrashAlt, FaPlus } from 'react-icons/fa'
+import { useEffect, useState } from 'react'
+import { FaTrashAlt, FaPlus, FaEdit } from 'react-icons/fa'
 import Layout from '../../components/Layout'
 import api from '../../services/api'
 import styles from '../../styles/Home.module.css'
 
 export default function Localizacoes({ localizacoes }) {
-  const [localizacoesAtuais, setLocalizacoes] = useState(localizacoes)
+  const [localizacoesAtuais, setLocalizacoes] = useState([])
 
-  async function handleDelete(id) {
+  useEffect(async () => {
+    const response = await api.get('/localizacoes')
+    setLocalizacoes(response.data)
+  }, [])
+
+  async function handleDelete(id, event) {
+    event.target.disabled = true
     await api.delete(`/localizacoes/${id}`)
     setLocalizacoes(localizacoesAtuais.filter(localizacao => localizacao.id !== id))
   }
@@ -27,43 +33,39 @@ export default function Localizacoes({ localizacoes }) {
         Veja as localizações disponíveis para realizar um evento acadêmico
       </p>
 
-      {localizacoesAtuais.length > 0 ?
-        (
-          <div className={styles.grid}>
-            <Link href="/localizacoes/novo">
-              <a className={styles.newCard}>
-                <FaPlus color="#fff" size={36} />
-              </a>
-            </Link>
-            {localizacoesAtuais.map(localizacao => (
-              <div className={styles.card} key={localizacao.id}>
-                <h3>{localizacao.endereco}</h3>
+      <div className={styles.grid}>
+        <Link href="/localizacoes/novo">
+          <a className={styles.newCard}>
+            <FaPlus color="#fff" size={36} />
+          </a>
+        </Link>
+        {localizacoesAtuais.length > 0 ?
+          localizacoesAtuais.map(localizacao => (
+            <div className={styles.card} key={localizacao.id}>
+              <h3>{localizacao.endereco}</h3>
+              <div>
+                <small>{localizacao.valor > 0 ? `R$ ${localizacao.valor.toFixed(2)}` : 'Grátis'}</small>
                 <div>
-                  <small>{localizacao.valor > 0 ? `R$ ${localizacao.valor.toFixed(2)}` : 'Grátis'}</small>
-                  <button className={styles.removeBtn} onClick={() => handleDelete(localizacao.id)}>
+                  <Link href={`/localizacoes/${localizacao.id}/editar`}>
+                    <a>
+                      <button>
+                        <FaEdit color='#fff' />
+                      </button>
+                    </a>
+                  </Link>
+                  <button className={styles.removeBtn} onClick={(e) => handleDelete(localizacao.id, e)}>
                     <FaTrashAlt color='#fff' />
                   </button>
                 </div>
               </div>
-            ))}
-          </div>
-        ) :
-        (
-          <p className={styles.noData}>Sem localizações cadastradas</p>
-        )
-      }
+            </div>
+          )) : (
+            <div className={styles.card}>
+              <p className={styles.noData}>Carregando...</p>
+            </div>
+          )
+        }
+      </div>
     </Layout>
   )
-}
-
-export async function getStaticProps() {
-  const response = await api.get('/localizacoes')
-  const localizacoes = response.data
-
-  return {
-    props: {
-      localizacoes
-    },
-    revalidate: 1
-  }
 }

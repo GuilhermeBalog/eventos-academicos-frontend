@@ -27,6 +27,11 @@ button{
   border: none;
 }
 
+button:disabled{
+  background-color: #646464 !important;
+  cursor: not-allowed;
+}
+
 form div{
   display: grid;
   grid-template-columns: 1fr 1fr;

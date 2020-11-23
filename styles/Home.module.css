@@ -10,7 +10,6 @@
 .header{
   background-color: #0070f3;
   color: #ffffff;
-  font-weight: 700;
   position: fixed;
   top: 0;
   width: 100%;
@@ -19,15 +18,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.header > div{
+  display: flex;
+  margin-right: 1em;
+  flex: 1;
+  font-weight: 700;
+  font-size: 1.25em;
 }
 
 .header ul{
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  font-weight: 500;
 }
 
 .header li{
-  padding: 0 1em;
+  padding: 0 1em 0 0;
 }
 
 .main {
@@ -102,10 +113,6 @@
   font-size: 1.5rem;
 }
 .grid {
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap; */
   display: grid;
   grid-template-columns: 1fr 1fr;
 
@@ -160,7 +167,7 @@
   font-weight: 400;
 }
 
-.card div{
+.card > div{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -170,6 +177,10 @@
 .card small{
   font-size: 1em;
   font-weight: 300;
+}
+
+.card > div > div > button{
+  margin-left: 10px;
 }
 
 @media (max-width: 600px) {
