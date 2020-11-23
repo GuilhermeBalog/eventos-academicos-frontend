@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { FaEdit } from 'react-icons/fa'
 import api from '../../../services/api'
 import styles from '../../../styles/Home.module.css'
 import Layout from '../../../components/Layout'
@@ -12,19 +13,50 @@ export default function Evento({ evento }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Link href="/eventos">
-        <a>
-          Voltar
-        </a>
-      </Link>
-      <h1>{evento.nome} - {evento.edicao}ª Edição</h1>
+      <div>
+        <Link href="/eventos">
+          <a>
+            Voltar
+          </a>
+        </Link>
+        {' | '}
+        <Link href={`/eventos/${evento.id}/editar`}>
+          <a>
+            Editar
+          </a>
+        </Link>
+      </div>
+
+      <h1>
+        {evento.nome} - {evento.edicao}ª Edição
+      </h1>
 
       <p className={styles.description}>
         {evento.tema}
       </p>
+      <small>{evento.endereco}</small>
       <p className={styles.description}>
-        {evento.valorinscricao > 0 ? `R$ ${evento.valorinscricao.toFixed(2)}` : 'Grátis'}
+        Valor base do ingresso: {evento.valorinscricao > 0 ? `R$ ${evento.valorinscricao.toFixed(2)}` : 'Grátis'}
       </p>
+
+      <h2>Ingressos Vendidos</h2>
+
+      <div className={styles.grid}>
+        {evento.pessoas.length > 0 && evento.pessoas.map(pessoa => (
+          <div className={styles.card} key={pessoa.id}>
+            <h3>{pessoa.nome}</h3>
+            <h4>{pessoa.idade} anos</h4>
+            <p>Comprado em {new Date(pessoa.datacompra).toLocaleDateString()}</p>
+            <div>
+              <Link href={`/pessoas/${pessoa.id}`}>
+                <a>
+                  <button>Ver mais</button>
+                </a>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
     </Layout>
   )
 }

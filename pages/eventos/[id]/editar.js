@@ -35,11 +35,9 @@ export default function Localizacao({ evento }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Link href="/eventos">
-        <a>
-          Voltar
-        </a>
-      </Link>
+      <a href="#" onClick={() => router.back()}>
+        Voltar
+      </a>
 
       <h1>Editar Evento</h1>
 
