@@ -5,13 +5,22 @@ import api from '../../../services/api'
 import styles from '../../../styles/Home.module.css'
 import Layout from '../../../components/Layout'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 export default function Evento({ evento }) {
   const router = useRouter()
+  const [ingressos, setIngressos] = useState(evento.pessoas)
 
   if (router.isFallback || !evento) {
     return <p className={styles.noData}>Carregando...</p>
   }
+
+  useEffect(async () => {
+    const response = await api.get(`/eventos/${params.id}`)
+    const evento = response.data
+
+    setIngressos(evento.pessoas)
+  }, [])
 
   return (
     <Layout>
@@ -56,7 +65,7 @@ export default function Evento({ evento }) {
             <strong>Vender ingresso</strong>
           </a>
         </Link>
-        {evento.pessoas.length > 0 && evento.pessoas.map(pessoa => (
+        {ingressos.length > 0 && ingressos.map(pessoa => (
           <div className={styles.card} key={pessoa.id}>
             <h3>{pessoa.nome}</h3>
             <h4>{pessoa.idade} anos</h4>

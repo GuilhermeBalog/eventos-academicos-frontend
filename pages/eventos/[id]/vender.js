@@ -27,8 +27,8 @@ export default function VenderIngresso({ evento }) {
     setLoading(true)
 
     await api.post('/ingressos', {
-      fk_evento_id: evento.id,
-      fk_pessoas_id,
+      fk_evento_id: parseInt(evento.id),
+      fk_pessoas_id: parseInt(fk_pessoas_id),
       datacompra: new Date().toISOString()
     })
 
