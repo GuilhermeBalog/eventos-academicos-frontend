@@ -14,6 +14,7 @@ export default function Localizacao({ localizacao }) {
   async function handleSubmit(e) {
     e.preventDefault()
     setLoading(true)
+
     await api.put(`/localizacoes/${router.query.id}`, { endereco, valor })
     router.push('/localizacoes')
   }
@@ -21,7 +22,7 @@ export default function Localizacao({ localizacao }) {
   return (
     <Layout>
       <Head>
-        <title>Editar Localizacao</title>
+        <title>Editar Localização</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
