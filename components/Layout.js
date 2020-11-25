@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { FaHome } from 'react-icons/fa'
 import styles from '../styles/Home.module.css'
 
 export default function Layout({ children }) {
@@ -7,7 +8,11 @@ export default function Layout({ children }) {
       <header className={styles.header}>
         <div>
           <Link href="/">
-            Home
+            <a>
+              <FaHome color="#fff" />
+              {' '}
+              <span>Home</span>
+            </a>
           </Link>
         </div>
         <ul>

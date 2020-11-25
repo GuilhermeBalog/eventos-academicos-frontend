@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { FaEdit } from 'react-icons/fa'
+import { FaMoneyBillWave } from 'react-icons/fa'
 import api from '../../../services/api'
 import styles from '../../../styles/Home.module.css'
 import Layout from '../../../components/Layout'
@@ -42,6 +42,13 @@ export default function Evento({ evento }) {
       <h2>Ingressos Vendidos</h2>
 
       <div className={styles.grid}>
+        <Link href={`/eventos/${evento.id}/vender`}>
+          <a className={`${styles.newCard}`}>
+            <FaMoneyBillWave color="#fff" size={36} />
+            <br />
+            <strong>Vender ingresso</strong>
+          </a>
+        </Link>
         {evento.pessoas.length > 0 && evento.pessoas.map(pessoa => (
           <div className={styles.card} key={pessoa.id}>
             <h3>{pessoa.nome}</h3>
