@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import api from '../../../services/api'
 import Layout from '../../../components/Layout'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
+import styles from '../../../styles/Home.module.css'
 
 export default function EditarPessoa({ pessoa }) {
   const [nome, setNome] = useState(pessoa ? pessoa.nome : "")
@@ -12,6 +12,10 @@ export default function EditarPessoa({ pessoa }) {
 
   const [loading, setLoading] = useState(false)
   const router = useRouter()
+
+  if (router.isFallback || !pessoa) {
+    return <p className={styles.noData}>Carregando...</p>
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()

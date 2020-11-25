@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import api from '../../../services/api'
 import Layout from '../../../components/Layout'
 import { useEffect, useState } from 'react'

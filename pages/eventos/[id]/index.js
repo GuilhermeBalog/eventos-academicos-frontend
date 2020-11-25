@@ -4,8 +4,15 @@ import { FaMoneyBillWave } from 'react-icons/fa'
 import api from '../../../services/api'
 import styles from '../../../styles/Home.module.css'
 import Layout from '../../../components/Layout'
+import { useRouter } from 'next/router'
 
 export default function Evento({ evento }) {
+  const router = useRouter()
+
+  if (router.isFallback || !evento) {
+    return <p className={styles.noData}>Carregando...</p>
+  }
+
   return (
     <Layout>
       <Head>
@@ -17,19 +24,19 @@ export default function Evento({ evento }) {
         <Link href="/eventos">
           <a>
             Voltar
-          </a>
+            </a>
         </Link>
         {' | '}
         <Link href={`/eventos/${evento.id}/editar`}>
           <a>
             Editar
-          </a>
+            </a>
         </Link>
       </div>
 
       <h1>
         {evento.nome} - {evento.edicao}ª Edição
-      </h1>
+        </h1>
 
       <p className={styles.description}>
         {evento.tema}

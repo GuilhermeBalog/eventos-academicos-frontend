@@ -4,12 +4,17 @@ import api from '../../../services/api'
 import Layout from '../../../components/Layout'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import styles from '../../../styles/Home.module.css'
 
 export default function Localizacao({ localizacao }) {
   const [endereco, setEndereco] = useState(localizacao ? localizacao.endereco : "")
   const [valor, setValor] = useState(localizacao ? localizacao.valor : "")
   const [loading, setLoading] = useState(false)
   const router = useRouter()
+
+  if (router.isFallback || !localizacao) {
+    return <p className={styles.noData}>Carregando...</p>
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()

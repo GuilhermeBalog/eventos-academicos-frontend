@@ -3,8 +3,15 @@ import Link from 'next/link'
 import api from '../../../services/api'
 import styles from '../../../styles/Home.module.css'
 import Layout from '../../../components/Layout'
+import { useRouter } from 'next/router'
 
 export default function Pessoa({ pessoa }) {
+  const router = useRouter()
+
+  if (router.isFallback || !pessoa) {
+    return <p className={styles.noData}>Carregando...</p>
+  }
+
   return (
     <Layout>
       <Head>

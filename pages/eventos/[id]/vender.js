@@ -13,6 +13,10 @@ export default function VenderIngresso({ evento }) {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
+  if (router.isFallback || !evento) {
+    return <p className={styles.noData}>Carregando...</p>
+  }
+
   useEffect(async () => {
     const response = await api.get('/pessoas')
     setPessoas(response.data)
@@ -42,19 +46,19 @@ export default function VenderIngresso({ evento }) {
         <Link href={`/eventos/${evento.id}`}>
           <a>
             Voltar
-          </a>
+            </a>
         </Link>
         {' | '}
         <Link href={`/eventos/${evento.id}/editar`}>
           <a>
             Editar
-          </a>
+            </a>
         </Link>
       </div>
 
       <h1>
         Vender ingresso para {evento.nome} - {evento.edicao}ª Edição
-      </h1>
+        </h1>
 
       <p className={styles.description}>
         Valor base do ingresso: {evento.valorinscricao > 0 ? `R$ ${evento.valorinscricao.toFixed(2)}` : 'Grátis'}
