@@ -84,7 +84,7 @@ export default function NovaLocalizacao() {
             type="text"
             name="valor"
             value={valorinscricao}
-            onChange={e => setValor(e.target.value)}
+            onChange={e => setValor(parseInt(e.target.value))}
             id="valor"
             placeholder="Digite o valor da inscrição"
           />
