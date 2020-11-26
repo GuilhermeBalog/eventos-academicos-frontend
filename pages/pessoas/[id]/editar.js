@@ -70,10 +70,10 @@ export default function EditarPessoa({ pessoa }) {
             value={sexo}
           >
             <option value={true}>
-              Homem
+              Masculino
             </option>
             <option value={false}>
-              Mulher
+              Feminino
             </option>
           </select>
         </div>

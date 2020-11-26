@@ -61,10 +61,10 @@ export default function NovaPessoa() {
             value={sexo}
           >
             <option value={true}>
-              Homem
+              Masculino
             </option>
             <option value={false}>
-              Mulher
+              Feminino
             </option>
           </select>
         </div>

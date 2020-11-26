@@ -28,7 +28,6 @@
   flex: 1;
   font-weight: 700;
   font-size: 1.25em;
-  /* background-color: #f20133; */
 }
 
 .header ul{
@@ -70,7 +69,7 @@
   bottom: 0;
   width: 100%;
   height: 60px;
-  background-color: #d1d1d1;
+  background-color: #ebebeb;
   padding: 0 10px;
   
   display: flex;
