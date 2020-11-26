@@ -100,7 +100,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const response = await api.get(`/eventos/${params.id}`)
   const evento = response.data
 
