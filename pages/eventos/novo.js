@@ -7,10 +7,10 @@ import api from '../../services/api'
 
 export default function NovaLocalizacao() {
   const [edicao, setEdicao] = useState("")
-  const [fk_localizacao_id, setLocalizacaoId] = useState("")
+  const [fk_localizacao_id, setLocalizacaoId] = useState(1)
   const [nome, setNome] = useState("")
   const [tema, setTema] = useState("")
-  const [valorinscricao, setValor] = useState("")
+  const [valorinscricao, setValor] = useState(0)
   const [localizacoes, setLocalizacoes] = useState([])
 
   const [loading, setLoading] = useState(false)
@@ -94,7 +94,7 @@ export default function NovaLocalizacao() {
           <select
             name="fk_localizacao_id"
             id="fk_localizacao_id"
-            onChange={e => setLocalizacaoId(e.target.value)}
+            onChange={e => setLocalizacaoId(parseInt(e.target.value))}
           >
             {localizacoes.map(localizacao => (
               <option value={localizacao.id} key={localizacao.id}>

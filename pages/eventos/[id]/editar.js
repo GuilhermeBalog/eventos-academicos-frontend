@@ -90,7 +90,7 @@ export default function Localizacao({ evento }) {
           <select
             name="fk_localizacao_id"
             id="fk_localizacao_id"
-            onChange={e => setLocalizacaoId(e.target.value)}
+            onChange={e => setLocalizacaoId(parseInt(e.target.value))}
             value={fk_localizacao_id}
           >
             {localizacoes.map(localizacao => (
