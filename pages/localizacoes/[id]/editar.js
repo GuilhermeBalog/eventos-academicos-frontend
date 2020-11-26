@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import styles from '../../../styles/Home.module.css'
 
 export default function Localizacao({ localizacao }) {
+  const [nome, setNome] = useState(localizacao ? localizacao.nome : "")
   const [endereco, setEndereco] = useState(localizacao ? localizacao.endereco : "")
   const [valor, setValor] = useState(localizacao ? localizacao.valor : "")
   const [loading, setLoading] = useState(false)
@@ -20,7 +21,7 @@ export default function Localizacao({ localizacao }) {
     e.preventDefault()
     setLoading(true)
 
-    await api.put(`/localizacoes/${router.query.id}`, { endereco, valor })
+    await api.put(`/localizacoes/${router.query.id}`, { nome, endereco, valor })
     router.push('/localizacoes')
   }
 
@@ -40,6 +41,17 @@ export default function Localizacao({ localizacao }) {
       <h1>Editar Localização</h1>
 
       <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="nome">Nome</label>
+          <input
+            type="text"
+            name="nome"
+            value={nome}
+            onChange={e => setNome(e.target.value)}
+            id="nome"
+            placeholder="Digite o nome"
+          />
+        </div>
         <div>
           <label htmlFor="endereco">Endereço</label>
           <input

@@ -54,7 +54,7 @@ export default function Pessoa({ pessoa }) {
                 <p>Comprado em {new Date(evento.datacompra).toLocaleDateString()}</p>
                 <div>
                   <small>
-                    {evento.valorinscricao > 0 ? `R$ ${evento.valorinscricao.toFixed(2)}` : 'Grátis'}
+                    Ingresso: {evento.valorinscricao > 0 ? `R$ ${evento.valorinscricao.toFixed(2)}` : 'Grátis'}
                   </small>
                   <Link href={`/eventos/${evento.id}`}>
                     <a>

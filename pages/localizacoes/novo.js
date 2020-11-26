@@ -5,6 +5,7 @@ import Layout from '../../components/Layout'
 import api from '../../services/api'
 
 export default function NovaLocalizacao() {
+  const [nome, setNome] = useState("")
   const [endereco, setEndereco] = useState("")
   const [valor, setValor] = useState("")
   const [loading, setLoading] = useState(false)
@@ -14,7 +15,7 @@ export default function NovaLocalizacao() {
     e.preventDefault()
     setLoading(true)
 
-    await api.post('/localizacoes', { endereco, valor })
+    await api.post('/localizacoes', { nome, endereco, valor })
     router.push('/localizacoes')
   }
 
@@ -28,6 +29,17 @@ export default function NovaLocalizacao() {
       <h1>Nova localização</h1>
 
       <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="nome">Nome</label>
+          <input
+            type="text"
+            name="nome"
+            value={nome}
+            onChange={e => setNome(e.target.value)}
+            id="nome"
+            placeholder="Digite o nome"
+          />
+        </div>
         <div>
           <label htmlFor="endereco">Endereço</label>
           <input

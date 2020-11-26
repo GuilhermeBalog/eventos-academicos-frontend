@@ -98,7 +98,7 @@ export default function NovaLocalizacao() {
           >
             {localizacoes.map(localizacao => (
               <option value={localizacao.id} key={localizacao.id}>
-                {localizacao.endereco}
+                {localizacao.nome}
               </option>
             ))}
           </select>

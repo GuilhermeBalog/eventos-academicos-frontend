@@ -43,9 +43,13 @@ export default function Eventos() {
             <div className={styles.card} key={evento.id}>
               <h3>{evento.nome} - {evento.edicao}ª Edição</h3>
               <h4>{evento.tema}</h4>
-              <p>{evento.endereco}</p>
+              <p>
+                <strong>{evento.localizacao}</strong>
+                {' - '}
+                {evento.endereco}
+              </p>
               <div>
-                <small>{evento.valorinscricao > 0 ? `R$ ${evento.valorinscricao.toFixed(2)}` : 'Grátis'}</small>
+                <small>Ingresso: {evento.valorinscricao > 0 ? `R$ ${evento.valorinscricao.toFixed(2)}` : 'Grátis'}</small>
                 <div>
                   <Link href={`/eventos/${evento.id}`}>
                     <a>

@@ -16,10 +16,10 @@ export default function Evento({ evento }) {
   }
 
   useEffect(async () => {
-    const response = await api.get(`/eventos/${params.id}`)
-    const evento = response.data
+    const response = await api.get(`/eventos/${evento.id}`)
+    const eventoResponse = response.data
 
-    setIngressos(evento.pessoas)
+    setIngressos(eventoResponse.pessoas)
   }, [])
 
   return (
@@ -45,12 +45,18 @@ export default function Evento({ evento }) {
 
       <h1>
         {evento.nome} - {evento.edicao}ª Edição
-        </h1>
+      </h1>
 
       <p className={styles.description}>
         {evento.tema}
       </p>
-      <small>{evento.endereco}</small>
+
+      <small>
+        <strong>{evento.localizacao}</strong>
+        {' - '}
+        {evento.endereco}
+      </small>
+
       <p className={styles.description}>
         Valor base do ingresso: {evento.valorinscricao > 0 ? `R$ ${evento.valorinscricao.toFixed(2)}` : 'Grátis'}
       </p>

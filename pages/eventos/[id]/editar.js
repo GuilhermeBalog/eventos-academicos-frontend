@@ -95,7 +95,7 @@ export default function Localizacao({ evento }) {
           >
             {localizacoes.map(localizacao => (
               <option value={localizacao.id} key={localizacao.id}>
-                {localizacao.endereco}
+                {localizacao.nome}
               </option>
             ))}
           </select>

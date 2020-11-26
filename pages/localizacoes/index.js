@@ -42,9 +42,12 @@ export default function Localizacoes() {
         {localizacoesAtuais.length > 0 ?
           localizacoesAtuais.map(localizacao => (
             <div className={styles.card} key={localizacao.id}>
-              <h3>{localizacao.endereco}</h3>
+              <h3>{localizacao.nome ? localizacao.nome : 'Nome do local'}</h3>
+              <p>{localizacao.endereco}</p>
               <div>
-                <small>{localizacao.valor > 0 ? `R$ ${localizacao.valor.toFixed(2)}` : 'Grátis'}</small>
+                <small>
+                  Aluguel: {localizacao.valor > 0 ? `R$ ${localizacao.valor.toFixed(2)}` : 'Grátis'}
+                </small>
                 <div>
                   <Link href={`/localizacoes/${localizacao.id}/editar`}>
                     <a>
