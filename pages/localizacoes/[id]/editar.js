@@ -69,7 +69,7 @@ export default function Localizacao({ localizacao }) {
   )
 }
 
-export async function getStaticPaths() {
+async function getStaticPaths() {
   const response = await api.get('/localizacoes')
   const localizacoes = response.data
 

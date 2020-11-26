@@ -107,7 +107,7 @@ export default function Localizacao({ evento }) {
   )
 }
 
-export async function getStaticPaths() {
+async function getStaticPaths() {
   const response = await api.get('/eventos')
   const eventos = response.data
 

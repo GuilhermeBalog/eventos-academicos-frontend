@@ -84,7 +84,7 @@ export default function EditarPessoa({ pessoa }) {
   )
 }
 
-export async function getStaticPaths() {
+async function getStaticPaths() {
   const response = await api.get('/pessoas')
   const pessoas = response.data
 

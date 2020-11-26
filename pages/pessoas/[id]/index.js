@@ -75,7 +75,7 @@ export default function Pessoa({ pessoa }) {
   )
 }
 
-export async function getStaticPaths() {
+async function getStaticPaths() {
   const response = await api.get('/pessoas')
   const pessoas = response.data
 
